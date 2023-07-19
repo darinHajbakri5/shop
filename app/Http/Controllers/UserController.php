@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Silber\Bouncer\BouncerFacade as Bouncer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +28,7 @@ class UserController extends Controller
         $FormFields['password'] = bcrypt($FormFields['password']);
         $FormFields['role'] = 'seller';
         $user = User::create($FormFields);
+        Bouncer::assign('seller')->to($user);
         Auth::login($user);
         return redirect('/');
     }
@@ -52,6 +54,7 @@ class UserController extends Controller
         $FormFields['password'] = bcrypt($FormFields['password']);
         $FormFields['role'] = 'customer';
         $user = User::create($FormFields);
+        Bouncer::assign('customer')->to($user);
         Auth::login($user);
         return redirect('/');
     }

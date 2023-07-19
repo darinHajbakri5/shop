@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Silber\Bouncer\BouncerFacade as Bouncer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +26,7 @@ class AdminController extends Controller
         $FormFields['password'] = bcrypt($FormFields['password']);
         $FormFields['role'] = 'admin';
         $user = User::create($FormFields);
+        Bouncer::assign('admin')->to($user);
         Auth::login($user);
         return redirect('/');
     }
