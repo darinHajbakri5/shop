@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('logo');
             $table->float('price');
+            $table->integer('limit');
+            $table->integer('basket')->default(0);
             $table->unsignedBigInteger('seller_id');
             $table->unsignedBigInteger('store_id');
             $table->timestamps();

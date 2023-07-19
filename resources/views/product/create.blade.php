@@ -19,6 +19,10 @@
             <label for="price">Price</label>
             <input type="number" step="0.01" name="price" id="price" class="form-control" required>
         </div>
+        <div class="form-group ">
+            <label for="limit">Limit</label>
+            <input type="number" step="0.01" name="limit" id="limit" class="form-control" required>
+        </div>
 
         <div class="form-group ">
             <label for="logo">Logo</label>

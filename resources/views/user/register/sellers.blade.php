@@ -3,12 +3,11 @@
 @section('content')
 <div class="container">
 
-    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card border-success mb-3">
+                <div class="card border-success mb-3 mt-4">
                 <div class="card-body">
-                    <form method="POST" action="/users/sellerregister">
+                    <form method="POST" action="{{route('sellerregister')}}">
                         @csrf
                         <div id="sellerInfo" class="form-group row">
                             <label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>

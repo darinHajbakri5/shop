@@ -10,7 +10,7 @@
                     <h4 class="card-title">Create your store</h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/create/users" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('store.create')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="store_name" class="form-label">Store Name</label>
@@ -24,7 +24,11 @@
                             <label for="city" class="form-label">City</label>
                             <input type="text" class="form-control" id="city" name="city" required>
                         </div>
-                        <button type="submit" class="btn text-success border-success">Create</button>
+                        <div class="form-group ">
+                            <label for="logo">Logo</label>
+                            <input type="file" name="logo" id="logo" class="form-control product-logo" required>
+                        </div>
+                        <button type="submit" class="btn text-success border-success mt-2">Create</button>
 
                     </form>
                 </div>

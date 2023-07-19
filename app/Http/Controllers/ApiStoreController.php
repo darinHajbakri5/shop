@@ -7,23 +7,18 @@ use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StoreController extends Controller
+class ApiStoreController extends Controller
 {
     public function index(Request $request ){
         $store = Store::all();
-        return view('store.index', compact('store'));
+        return response()->json($store, 200);
     }
 
 
     public function show(Store $store){
-        return view('store.show', compact('store'));
+       return response()->json($store, 200);
     }
 
-        public function create(){
-       if (Auth::user()->can('CREATE_STORE')) {
-            return view('store.create');
-        }
-    }
 
     public function store(Request $request)
     {
@@ -42,36 +37,27 @@ class StoreController extends Controller
             $storeData['logo'] = $path;
 
             Store::create($storeData);
+            return response()->json($storeData, 200);
 
-            return redirect('/store');
+
         }
+
     }
-    public function edit(Store $store)
-    {
-        if (Auth::user()->can('EDIT_STORE') && $store->user_id == Auth::user()->id) {
-            return view ('store.edit',compact('store'));
-        }
-    }
+
 
     public function update(Request $request, Store $store)
     {
         if (Auth::user()->can('EDIT_STORE') && $store->user_id == Auth::user()->id) {
             $store->update($request->all());
-            return redirect('/');
+            return response()->json($store, 200);
         }
     }
    public function destroy(Store $store){
     if (Auth::user()->can('DELETE_STORE')) {
         $store->delete();
-        return redirect()->route('home');
+        return response()->json($store, 200);
 
 }
 }
 
-    public function manage(){
-         if (Auth::user()->can('MANAGE_STORE')) {
-             if(auth()->check()) {
-                $stores = auth()->user()->stores;
-                return view('store.manage', ['stores' =>$stores]);
-    }}
-}}
+}

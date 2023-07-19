@@ -31,7 +31,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">darinhajbakri5@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
                 </div>
@@ -72,6 +72,8 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link small-nav" href="{{ route('product')  }}">Home</a>
                         </li>
 
+
+
                         <li class="nav-item">
                         <a class="nav-link small-nav" href="{{ route('home')  }}">stores</a>
                         </li>
@@ -102,6 +104,9 @@ https://templatemo.com/tm-559-zay-shop
                         <a class="nav-icon position-relative text-decoration-none" href="{{ route('index.cart')  }}">
                             <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1 mt-2"></i>
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link small-nav" href="{{ route('product')  }}">Home</a>
+                        </li>
 
 
                         <li class="nav-item">
@@ -171,7 +176,7 @@ https://templatemo.com/tm-559-zay-shop
 
 
     <!-- Start Footer -->
-    <footer class="bg-success" id="tempaltemo_footer">
+    <footer class="bg-success mt-5" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
 
@@ -209,7 +214,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="/">Home</a></li>
+                        <li><a class="text-decoration-none" href="{{route('product')}}">Home</a></li>
                         <li><a class="text-decoration-none" href="/store">stores</a></li>
 
                     </ul>

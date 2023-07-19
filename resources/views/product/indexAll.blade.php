@@ -34,6 +34,7 @@
                             </li>
                         </ul>
                         <p class="text-center mb-0">${{ $product->price }}</p>
+                        <p class="text-center mb-0">{{ $product->basket }}</p>
                     </div>
                 </div>
             </div>

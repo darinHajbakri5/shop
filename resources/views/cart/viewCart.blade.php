@@ -14,7 +14,14 @@
                         <th>Title</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Actions</th>
+                        <th>Basket</th>
+                        <th></th>
+                        <th >Actions</th>
+
+
+
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -26,12 +33,25 @@
                         <td>{{ $cart->product->title }}</td>
                         <td>{{ $cart->product->description }}</td>
                         <td>${{ $cart->product->price }}</td>
+                        <td>{{ $cart->product->basket }}</td>
                         <td>
-                            <form action="{{route('deleteCart', $cart)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger btn-sm delete-btn">Remove</button>
-                            </form>
+                            <div>
+                                <td>
+                                    <div style="display: flex; gap: 10px;">
+                                        <form action="{{route('deleteCart', $cart)}}" method="POST" style="margin: 0;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input class="fas fa-cart-plus btn btn-danger " type="submit" value="delete">
+                                        </form>
+                                        <form action="{{ route('addCart', ['product' => $cart->product]) }}" method="POST" class="p-0" style="margin: 0;">
+                                            @csrf
+                                            @if(Auth::user())
+                                            <input class="fas fa-cart-plus btn btn-success " type="submit" value="ADD">
+                                            @endif
+                                        </form>
+                                    </div>
+                                </td>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

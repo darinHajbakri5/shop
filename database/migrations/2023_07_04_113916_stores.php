@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('city');
             $table->timestamps();
+            $table->string('logo');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

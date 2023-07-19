@@ -2,30 +2,25 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\User;
 use App\Models\Store;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ApiProductController;
 
-class ProductController extends Controller
+class ApiProductController extends Controller
 {
     public function indexAll(){
         $product = Product::all();
-        return view ('product.indexAll',compact('product'));
+        return response()->json($product, 200);
+
     }
     public function index($id ){
         $store = Store::findOrFail($id);
         $products = $store->products;
-        return view ('product.index', compact('products'));
+        return response()->json($products, 200);
     }
 
-    public function createProduct(){
-        if(Auth::user()->can('CREATE_PRODUCT')){
-      return view('product.create');
-    }
-      }
+
 
       public function storeProduct(Request $request){
         if(Auth::user()->can('CREATE_PRODUCT')){
@@ -47,14 +42,10 @@ class ProductController extends Controller
         $product['seller_id'] = Auth::user()->id;
         $product->save();
 
-        return redirect('/');
+        return response()->json($product, 200);
     }}
 
-    public function editProduct( Product $product)
-    {
-        if(Auth::user()->can('UPDATE_PRODUCT' ) && $product->seller_id == Auth::user()->id){
-        return view ('product.edit',compact('product'));
-}}
+
 
 
     public function updateProduct(Request $request, Product $product)
@@ -62,13 +53,13 @@ class ProductController extends Controller
         if(Auth::user()->can('UPDATE_PRODUCT') && $product->seller_id == Auth::user()->id){
 
     $product->update($request->all());
-    return redirect('/manage');
+    return response()->json($product, 200);
 }}
 
     public function destroyProduct(Product $product){
     if(Auth::user()->can('DELETE_PRODUCT') && $product->seller_id == Auth::user()->id){
     $product->delete();
-    return redirect()->route('home');
+    return response()->json($product, 200);
 }
-}
-}
+}}
+

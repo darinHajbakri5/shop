@@ -16,7 +16,7 @@
                             @endif
                         </form>
                         @if(Auth::user()->role =='seller' || Auth::user()->role =='admin' )
-                        <a href="{{ route('product.edit', $product->id) }}" class="fas fa-cart-plus text-white btn btn-success">Edit</a>
+                        <a href="{{ route('product.edit', $product->id  ) }}" class="fas fa-cart-plus text-white btn btn-success">Edit</a>
                         @endif
                     </div>
                     <div class="card-body">
@@ -34,6 +34,7 @@
                             </li>
                         </ul>
                         <p class="text-center mb-0">${{ $product->price }}</p>
+                        <p class="text-center mb-0">${{ $product->basket }}</p>
 
 
 

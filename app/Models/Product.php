@@ -15,8 +15,10 @@ class Product extends Model
         'price',
         'seller_id',
         'store_id',
+        'limit',
+        'basket'
     ];
-    
+
     public function user() {
         return $this->belongsTo(User::class, 'seller_id');
     }

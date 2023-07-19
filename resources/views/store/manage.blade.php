@@ -10,7 +10,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <img src="./assets/img/apple-icon.png" alt="store image" class="card-img rounded-0 img-fluid">
+                        <img class="card-img rounded-0 img-fluid" src="{{ asset('storage/' . $store->logo) }}" style="width: 400px; height: 400px;">
                         <h5 class="card-title">{{ $store->store_name }}</h5>
                         <p class="card-text">
                             <i class="fas fa-map-marker-alt fa-fw"></i>
